@@ -263,7 +263,7 @@ class Factory
         $interfaces = $model->getImplements();
         $stringImpliments = "";
         if(isset($interfaces) && is_array($interfaces) && count($interfaces) > 0) {
-            $stringImpliments = " implements " . @implode(', ' . $interfaces);
+            $stringImpliments = " implements " . @implode(', ', $interfaces);
         }
         $template = str_replace('{{interface}}', $stringImpliments, $template);
 
