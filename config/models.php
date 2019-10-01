@@ -54,6 +54,8 @@ return [
 
         'parent' => Illuminate\Database\Eloquent\Model::class,
 
+        'interfaces' => [],
+
         /*
         |--------------------------------------------------------------------------
         | Traits

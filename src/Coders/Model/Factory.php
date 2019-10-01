@@ -260,6 +260,12 @@ class Factory
         $parentClass = $model->getParentClass();
         $usedClasses = array_merge($usedClasses, $this->extractUsedClasses($parentClass));
         $template = str_replace('{{parent}}', $parentClass, $template);
+        $interfaces = $model->getImplements();
+        $stringImpliments = "";
+        if(isset($interfaces) && is_array($interfaces) && count($interfaces) > 0) {
+            $stringImpliments = " implements " . @implode(', ' . $interfaces);
+        }
+        $template = str_replace('{{interface}}', $stringImpliments, $template);
 
         $body = $this->body($model);
         $usedClasses = array_merge($usedClasses, $this->extractUsedClasses($body));

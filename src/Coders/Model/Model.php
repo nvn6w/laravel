@@ -88,6 +88,11 @@ class Model
     protected $parentClass;
 
     /**
+     * @var array
+     */
+    protected $implements;
+
+    /**
      * @var bool
      */
     protected $timestamps = true;
@@ -184,6 +189,7 @@ class Model
     {
         $this->withNamespace($this->config('namespace'));
         $this->withParentClass($this->config('parent'));
+        $this->withImplements($this->config('interfaces'));
 
         // Timestamps settings
         $this->withTimestamps($this->config('timestamps.enabled', $this->config('timestamps', true)));
@@ -489,11 +495,30 @@ class Model
     }
 
     /**
+     * @param array $implements
+     * @return $this
+     */
+    public function withImplements(array $implements)
+    {
+        $this->implements = $implements;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getParentClass()
     {
         return $this->parentClass;
+    }
+
+    /**
+     * @return array
+     */
+    public function getImplements()
+    {
+        return $this->implements;
     }
 
     /**
